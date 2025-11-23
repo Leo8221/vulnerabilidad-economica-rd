@@ -1,16 +1,19 @@
-# Proyecto Vulnerabilidad Económica RD
-Este repositorio contiene un análisis aplicado sobre la **vulnerabilidad económica a nivel municipal en la República Dominicana**, combinando datos oficiales (ONE, BCRD, MEPyD, entre otros) con técnicas de limpieza de datos, construcción de indicadores y visualización.
+# Proyecto: Vulnerabilidad Económica Territorial en la República Dominicana (2016–2024)
+Este repositorio contiene un análisis aplicado sobre la vulnerabilidad económica a nivel de regiones de desarrollo en la República Dominicana.
+El proyecto integra información oficial proveniente del MEPyD, ONE y otras fuentes públicas, con técnicas de limpieza, transformación y análisis de datos en R.
 
-El objetivo es construir un **índice sintético de vulnerabilidad económica municipal** y explorar sus determinantes principales, con énfasis en variables de pobreza, mercado laboral, educación, acceso a servicios y finanzas públicas locales.
-
+El objetivo central es construir un índice territorial de vulnerabilidad económica, utilizando variables robustas y comparables en el tiempo —principalmente pobreza monetaria y población—, y acompañarlo de un análisis descriptivo del contexto económico y laboral del país.
 ---
 
 ## Objetivos del proyecto
 
-- Integrar en una sola base de datos información socioeconómica relevante a nivel municipal.
-- Construir un **indicador de vulnerabilidad económica** a partir de variables seleccionadas.
-- Analizar patrones territoriales de vulnerabilidad (mapas, rankings y clusters).
-- Producir visualizaciones y un reporte técnico que pueda servir como insumo para **diseño o evaluación de políticas públicas**.
+- Integrar en un solo panel datos oficiales de pobreza y población para el período 2016–2024.
+
+- Construir la primera versión de un índice de vulnerabilidad económica por región de desarrollo.
+
+- Analizar y comparar la evolución de pobreza y estructura poblacional entre regiones.
+
+- Generar visualizaciones, tablas y un reporte técnico que sirva como insumo para el diseño de políticas públicas orientadas al territorio.
 
 ---
 
@@ -26,10 +29,9 @@ vulnerabilidad-economica-rd/
 │   └── processed/   # Datos limpios y listos para análisis
 │
 ├── src/
-│   ├── 01_download.R   # (Opcional) Descarga o importación de datos
-│   ├── 02_etl.R        # Limpieza, transformación y unificación de bases
-│   ├── 03_analysis.R   # Análisis descriptivo, índices y modelos
-│   └── 04_report.R     # Generación de tablas/figuras usadas en el reporte
+│   ├── 01_limpieza_de_datos.R        # Limpieza, transformación y unificación de bases
+│   ├── 02_analysis.R   # Análisis descriptivo, índices y modelos
+│   └── 03_report.R     # Generación de tablas/figuras usadas en el reporte
 │
 ├── output/
 │   ├── figuras/     # Gráficos finales (PNG, JPG) para el reporte y README
@@ -42,50 +44,74 @@ vulnerabilidad-economica-rd/
 ```
 ## Metodologia
 
-De forma general, la metodología del proyecto contempla:
-
 1. Recolección y unificación de datos
 
-- Importación de bases de datos desde distintas instituciones.
+Importación de tabulados oficiales del MEPyD (pobreza monetaria).
 
-- Homologación de códigos y nombres de municipios.
+Importación de tabulados de población de la ONE.
 
-- Construcción de variables per cápita y tasas.
+Estandarización de nombres de regiones de desarrollo.
+
+Integración en un panel unificado:
+región de desarrollo × año (2016–2024).
 
 2. Limpieza y transformación
 
-- Tratamiento de valores faltantes.
+Manejo de encabezados múltiples en Excel.
 
-- Normalización/estandarización de variables (por ejemplo, z-score).
+Conversión de porcentajes a proporciones.
 
-- Construcción de indicadores intermedios (pobreza, mercado laboral, servicios, etc.).
+Construcción de variables derivadas, como:
 
-3. Construcción del índice de vulnerabilidad
+población en pobreza (tasa × población),
 
-- Definición de las dimensiones (ej.: ingreso, empleo, educación, servicios).
+diferencias interanuales,
 
-- Agregación mediante técnicas como:
+rankings regionales.
 
-- Promedios ponderados, y/o
+3. Índice de Vulnerabilidad Territorial – Versión 1
 
-- Análisis de Componentes Principales (PCA), y/o
+La primera versión del índice utiliza:
 
-- Clustering (k-means) para agrupar municipios por nivel de vulnerabilidad.
+Pobreza monetaria
+
+Población total (como aproximación al tamaño demográfico y carga territorial)
+
+Tratamiento técnico:
+
+Normalización (z-score).
+
+Construcción de un índice aditivo simple (versión inicial).
+
+Comparación entre regiones y años.
+
+Futuras versiones pueden incorporar:
+
+brecha/severidad de pobreza,
+
+indicadores educativos,
+
+indicadores laborales subnacionales (si están disponibles),
+
+PCA o métodos de agregación más robustos.
 
 4. Análisis y visualización
 
-- Análisis descriptivo por municipio/provincia/región.
+Evolución de la pobreza por región de desarrollo.
 
-- Mapas coropléticos de vulnerabilidad.
+Comparación del nivel de vulnerabilidad entre regiones.
 
-- Rankings de municipios más y menos vulnerables.
+Gráficos de distribución y rankings.
 
-- Gráficos de relación entre vulnerabilidad y variables clave (ej. gasto público local, escolaridad, etc.).
+Análisis contextual del mercado laboral nacional (2014–2025).
 
-5. Reporte final
+## A futuro
+Próximas extensiones
 
-- Elaboración de un reporte técnico en Quarto (docs/reporte.qmd).
+Incorporar brecha y severidad de la pobreza por región de desarrollo.
 
-- Presentación de la metodología, resultados y posibles aplicaciones en política pública.
+Integrar indicadores educativos y de mercado laboral si se publican a nivel subnacional.
 
-## Fuente de datos
+Construir una versión multidimensional del índice con PCA o ponderaciones.
+
+Explorar tipologías territoriales (clustering) cuando existan más variables.
