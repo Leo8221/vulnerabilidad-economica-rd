@@ -1,5 +1,6 @@
 # Proyecto: Vulnerabilidad Económica Territorial en la República Dominicana (2016–2024)
-
+![renv reproducible](https://img.shields.io/badge/reproducible-renv-blue)
+![R](https://img.shields.io/badge/Made%20with-R-276DC3?logo=r)
 ![Índice de Vulnerabilidad](output/figuras/indice_vulnerabilidad_por_region.png)
 
 ## Principales hallazgos
