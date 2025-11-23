@@ -46,6 +46,5 @@ pobreza_monetaria_longer <- pobreza_monetaria_con_titulos |>
 
 
 #limpieza de la base de datos de poblacion
-poblacion <- read_xlsx("C:\\Users\\leona\\OneDrive\\Escritorio\\Coding\\vulnerabilidad-economica-rd\\data\\raw\\cuadro-estimaciones-proyecciones-población-total-por-año-según-región-provincia-2000-2030.xlsx",skip = 5,col_names = FALSE)
 
 header <- slice(poblacion,1:2)
