@@ -1,4 +1,6 @@
 # Proyecto: Vulnerabilidad Económica Territorial en la República Dominicana (2016–2024)
+![Índice de Vulnerabilidad](output/figuras/indice_vulnerabilidad_por_region.png)
+
 Este repositorio contiene un análisis aplicado sobre la vulnerabilidad económica a nivel de regiones de desarrollo en la República Dominicana.
 El proyecto integra información oficial proveniente del MEPyD, ONE y otras fuentes públicas, con técnicas de limpieza, transformación y análisis de datos en R.
 
@@ -29,9 +31,8 @@ vulnerabilidad-economica-rd/
 │   └── processed/   # Datos limpios y listos para análisis
 │
 ├── src/
-│   ├── 01_limpieza_de_datos.R        # Limpieza, transformación y unificación de bases
-│   ├── 02_analysis.R   # Análisis descriptivo, índices y modelos
-│   └── 03_report.R     # Generación de tablas/figuras usadas en el reporte
+│   ├── 01_limpieza_de_datos.R  # Limpieza, transformación y unificación de bases
+│   └── 02_analysis.R   # Análisis descriptivo, índices y modelos
 │
 ├── output/
 │   ├── figuras/     # Gráficos finales (PNG, JPG) para el reporte y README
@@ -69,31 +70,32 @@ diferencias interanuales,
 
 rankings regionales.
 
-3. Índice de Vulnerabilidad Territorial – Versión 1
+3.Índice de Vulnerabilidad Territorial – Versión 1
 
-La primera versión del índice utiliza:
+Variables utilizadas:
 
-Pobreza monetaria
+- Tasa de pobreza monetaria.
 
-Población total (como aproximación al tamaño demográfico y carga territorial)
+- Población total.
 
 Tratamiento técnico:
 
-Normalización (z-score).
+Normalización mediante z-score.
 
 Construcción de un índice aditivo simple (versión inicial).
 
-Comparación entre regiones y años.
+Comparación temporal y entre regiones.
 
-Futuras versiones pueden incorporar:
+Posibles mejoras futuras:
 
-brecha/severidad de pobreza,
+brecha y severidad de la pobreza,
 
 indicadores educativos,
 
-indicadores laborales subnacionales (si están disponibles),
+variables laborales subnacionales,
 
-PCA o métodos de agregación más robustos.
+PCA u otros métodos de agregación más robustos.
+
 
 4. Análisis y visualización
 
